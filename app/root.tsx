@@ -6,7 +6,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
-
+import { Button } from "./components/ui/button";
 import styles from "./tailwind.css";
 
 export const links: LinksFunction = () => [
@@ -20,11 +20,10 @@ export const links: LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
-
   {
     rel: "stylesheet",
-    href: styles
-  }
+    href: styles,
+  },
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
@@ -36,8 +35,36 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+      <body className="bg-slate-950 p-6 h-dvh">
+        <nav className="flex justify-between items-center">
+          <p className="text-white font-extrabold text-3xl">
+            SCARLET<span className="text-rose-600">Deploy</span>
+          </p>
+          <div className="flex gap-4">
+            <Button
+              variant={"outline"}
+              className="bg-slate-950 text-white border-2"
+            >
+              Sign Up
+            </Button>
+            <Button className="bg-rose-700">Log In</Button>
+          </div>
+        </nav>
+        <main className=" h-[90dvh] grid justify-center items-center">
+          <div className="">
+            <p className="text-white text-4xl ">
+              Deployment made easy with a few clicks with{" "}
+              <span className="font-extrabold">SCARLET</span>
+              <span className="text-rose-600 font-extrabold">DEPLOY</span>
+            </p>
+          <div className="flex justify-center mt-8">
+            <Button className="font-extrabold bg-rose-600 text-white">
+              Let's Deploy
+            </Button>
+          </div>
+          </div>
+        </main>
+
         <ScrollRestoration />
         <Scripts />
       </body>
