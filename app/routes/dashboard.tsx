@@ -3,7 +3,7 @@ import { Outlet } from "@remix-run/react";
 export default function Dashboard() {
   return (
     <main className="h-dvh grid grid-cols-[0.4fr_2fr]">
-      <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white p-4">
+      <section className="bg-gradient-to-r from-slate-900 to-slate-800 text-white p-8">
         <div>
           <p className="font-extrabold text-2xl px-4">
             SCARLET<span className="text-rose-600">Deploy</span>
@@ -14,7 +14,7 @@ export default function Dashboard() {
           </section>
         </div>
       </section>
-      <section className="text-white font-bold text-2xl p-6 text-center">
+      <section className="text-white font-bold text-2xl p-6 text-center overflow-y-scroll">
         <Outlet />
       </section>
     </main>
