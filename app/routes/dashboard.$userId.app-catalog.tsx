@@ -1,9 +1,10 @@
 import AppCatalogCard from "~/components/app-catalog-card";
 import { TbBrandVite } from "react-icons/tb";
+import { FaNode } from "react-icons/fa";
 
 export default function AppCatalog() {
   const iconStyling= {size:50};
-  const apps = [{ name: "React + Vite", icon: <TbBrandVite  size={iconStyling.size} /> }];
+  const apps = [{ name: "React + Vite", icon: <TbBrandVite  size={iconStyling.size} /> }, {name:"Nodejs", icon:<FaNode size={60}/>}];
   return (
     <div>
       <h1 className="text-xl font-">
