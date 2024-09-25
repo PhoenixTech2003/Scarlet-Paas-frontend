@@ -11,7 +11,7 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div>
+    <div className="bg-gradient-to-r from-slate-950 to-slate-700">
       <nav className="flex justify-between items-center p-6">
         <p className="text-white font-extrabold text-3xl">
           SCARLET<span className="text-rose-600">Deploy</span>
@@ -19,7 +19,7 @@ export default function Index() {
         <div className="flex gap-4">
           <Button
             variant={"outline"}
-            className="bg-slate-950 text-white border-2"
+            className="bg-slate-700 text-white border-2"
           >
             Sign Up
           </Button>
