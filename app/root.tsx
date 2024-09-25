@@ -4,9 +4,14 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, LoaderFunction } from "@remix-run/node";
 import styles from "./tailwind.css?url";
+import { ClerkApp} from '@clerk/remix'
+import { rootAuthLoader } from '@clerk/remix/ssr.server'
+
+export const loader: LoaderFunction = (args) => rootAuthLoader(args)
 
 export const links: LinksFunction = () => [
   {
@@ -15,7 +20,7 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export default function App() {
+function App() {
   return (
     <html lang="en">
       <head>
@@ -25,7 +30,7 @@ export default function App() {
         <Links />
       </head>
       <body className="bg-slate-900  h-dvh">
-        <Outlet/>
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -35,4 +40,7 @@ export default function App() {
 
 
 
-
+export default ClerkApp(App,{
+  signInFallbackRedirectUrl:"/",
+  signUpFallbackRedirectUrl: "/",
+})
