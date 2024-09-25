@@ -1,6 +1,17 @@
 import AppCatalogCard from "~/components/app-catalog-card";
 import { TbBrandVite } from "react-icons/tb";
 import { FaNode } from "react-icons/fa";
+import { getAuth } from '@clerk/remix/ssr.server'
+import { redirect, LoaderFunction } from "@remix-run/node";
+
+
+export const loader: LoaderFunction = async (args) => {
+  const { userId } = await getAuth(args)
+  if (!userId) {
+    return redirect('/sign-in')
+  }
+  return {}
+}
 
 export default function AppCatalog() {
   const iconStyling= {size:50};
