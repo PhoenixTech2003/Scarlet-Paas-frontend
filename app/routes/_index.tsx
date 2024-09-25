@@ -1,7 +1,10 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { MetaFunction, LoaderFunction} from "@remix-run/node";
 import { Button } from "../components/ui/button";
 import { Link } from "@remix-run/react";
+import { getAuth } from '@clerk/remix/ssr.server'
+import { redirect } from "@remix-run/node";
 
+import { SignedOut, SignInButton, SignUpButton} from "@clerk/remix";
 export const meta: MetaFunction = () => {
   return [
     { title: "New Remix App" },
@@ -9,21 +12,35 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+export const loader:LoaderFunction = async(args)=>{
+  const {userId} = await getAuth(args)
+  if(userId){
+    return redirect(`/dashboard/${userId}/app-catalog`)
+  }
+    return {}
+}
+
+
 export default function Index() {
   return (
+    <SignedOut>
     <div className="bg-gradient-to-r from-slate-950 to-slate-700">
       <nav className="flex justify-between items-center p-6">
         <p className="text-white font-extrabold text-3xl">
           SCARLET<span className="text-rose-600">Deploy</span>
         </p>
         <div className="flex gap-4">
+          <SignUpButton>
+
           <Button
             variant={"outline"}
             className="bg-slate-700 text-white border-2"
           >
             Sign Up
           </Button>
-          <Button className="bg-rose-700">Log In</Button>
+
+          </SignUpButton>
+          <SignInButton><Button className="bg-rose-600">Sign In</Button></SignInButton>
         </div>
       </nav>
       <main className=" h-[90dvh] grid justify-center items-center">
@@ -43,5 +60,8 @@ export default function Index() {
         </div>
       </main>
     </div>
+
+
+    </SignedOut>
   );
 }
