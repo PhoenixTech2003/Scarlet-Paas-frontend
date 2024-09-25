@@ -1,7 +1,8 @@
 import { redirect, LoaderFunction } from "@remix-run/node";
 import { getAuth } from '@clerk/remix/ssr.server'
 import { createClerkClient } from "@clerk/remix/api.server";
-import { saveUserDataToMongo } from "~/lib/data";
+import { saveUserDataToMongo, getMongoUserId } from "~/lib/data";
+
 
 export const loader:LoaderFunction = async(args)=>{
     const {userId} = await getAuth(args)
@@ -13,7 +14,7 @@ export const loader:LoaderFunction = async(args)=>{
     const firstName = user.firstName as string
     const lastName = user.lastName as string
     await saveUserDataToMongo(emailAddress,firstName,lastName)
-    
-    return redirect(`/dashboard/${userId}/app-catalog`)
+    const mongoUserId = (await getMongoUserId(emailAddress)).data.userId
+    return redirect(`/dashboard/${mongoUserId}/app-catalog`)
 
 }
