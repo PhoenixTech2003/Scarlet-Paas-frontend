@@ -16,11 +16,10 @@ export default function AppCatalogCard({
 }) {
   return (
     <Dialog>
-      <DialogTrigger className=" rounded-md bg-gradient-to-r grid gap-4 from-slate-900 to-slate-800 py-24 px-4">
+      <DialogTrigger className="hover:border-2 hover:border-rose-600 rounded-xl bg-gradient-to-r grid gap-4 from-slate-900 to-slate-800 py-24 px-4">
         <div>
-
-       <p className="flex justify-center">{details.icon}</p> 
-        <p>{details.name}</p>
+          <p className="flex justify-center">{details.icon}</p>
+          <p>{details.name}</p>
         </div>
         <div className="flex items-center gap-2 self-center">
           <p className="font-normal text-lg">Click to start Deployment</p>
