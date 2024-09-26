@@ -13,11 +13,14 @@ import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 
+
 export default function AppCatalogCard({
   details,
 }: {
   details: AppCatalogCard;
 }) {
+  
+
   return (
     <Dialog>
       <DialogTrigger className="hover:border-2 hover:border-rose-600 rounded-xl bg-gradient-to-r grid gap-4 from-slate-900 to-slate-800 py-24 px-4">
@@ -37,11 +40,11 @@ export default function AppCatalogCard({
             Please provide a name for your app and upload a zip file of the app
           </DialogDescription>
         </DialogHeader>
-        <Form className="grid gap-4">
+        <Form  encType="multipart/form-data" method="post" className="grid gap-4">
           <Label>App Name</Label>
-          <Input type="text" />
+          <Input name="appname" type="text" />
           <Label>Zip file</Label>
-          <Input type="file" />
+          <Input name="zipFile" type="file" />
           <Button type="submit">Deploy</Button>
         </Form>
       </DialogContent>
