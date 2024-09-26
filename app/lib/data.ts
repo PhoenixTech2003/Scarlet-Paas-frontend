@@ -1,4 +1,6 @@
 import axios from "axios";
+
+
 export async function saveUserDataToMongo(
   id:string,
   emailAddress: string,
@@ -15,4 +17,11 @@ export async function getMongoUserId(email: string) {
 
 export async function getUserDetails(id:string | undefined) {
     return (await axios.get(`http://localhost:8083/users/${id}/details`)).data
+}
+
+export async function postDeployment(formData: FormData){
+  
+  axios.post("http://localhost:8083/deployments/", formData,{headers:{
+    'Content-Type': 'multipart/form-data',
+  }},)
 }
