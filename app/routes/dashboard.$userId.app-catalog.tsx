@@ -2,9 +2,10 @@ import AppCatalogCard from "~/components/app-catalog-card";
 import { TbBrandVite } from "react-icons/tb";
 import { FaNode } from "react-icons/fa";
 import { getAuth } from '@clerk/remix/ssr.server'
-import { redirect, LoaderFunction, json } from "@remix-run/node";
+import { redirect, LoaderFunction, json, ActionFunctionArgs } from "@remix-run/node";
 import { getUserDetails } from "~/lib/data";
 import { useLoaderData } from "@remix-run/react";
+import { postDeployment } from "~/lib/data";
 
 
 export const loader: LoaderFunction = async (args) => {
@@ -16,9 +17,21 @@ export const loader: LoaderFunction = async (args) => {
   return json({userDetails})
 }
 
+export const action = async ({params, request}:ActionFunctionArgs)=>{
+  const formdata = await request.formData();
+  const data = new FormData();
+  data.append('id', params.userId || '');
+  for (const [key, value] of formdata.entries()) {
+    data.append(key, value);
+  }
+
+  console.log(data)
+  await postDeployment(data)
+  return null
+}
+
 export default function AppCatalog() {
   const {userDetails} = useLoaderData<typeof loader>()
-  console.log(userDetails)
   const iconStyling= {size:50};
   const apps = [{ name: "React + Vite", icon: <TbBrandVite  size={iconStyling.size} /> }, {name:"Nodejs", icon:<FaNode size={60}/>}];
   return (
