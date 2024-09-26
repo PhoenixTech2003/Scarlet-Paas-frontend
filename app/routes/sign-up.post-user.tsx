@@ -13,7 +13,8 @@ export const loader:LoaderFunction = async(args)=>{
     const emailAddress = user.emailAddresses[0].emailAddress
     const firstName = user.firstName as string
     const lastName = user.lastName as string
-    await saveUserDataToMongo(emailAddress,firstName,lastName)
+    const id = userId as string
+    await saveUserDataToMongo(id,emailAddress,firstName,lastName)
     const mongoUserId = (await getMongoUserId(emailAddress)).data.userId
     return redirect(`/dashboard/${mongoUserId}/app-catalog`)
 

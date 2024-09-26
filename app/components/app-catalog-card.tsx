@@ -8,6 +8,7 @@ import {
 } from "./ui/dialog";
 import { FaArrowRight } from "react-icons/fa";
 import type { AppCatalogCard } from "~/lib/definitions";
+import { Button } from "./ui/button";
 
 export default function AppCatalogCard({
   details,
@@ -28,12 +29,14 @@ export default function AppCatalogCard({
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Are you absolutely sure?</DialogTitle>
+          <DialogTitle>Let us deploy your {details.name} app</DialogTitle>
           <DialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            Please provide a name for your app and upload a zip file of the app
           </DialogDescription>
         </DialogHeader>
+        <form>
+
+        </form>
       </DialogContent>
     </Dialog>
   );
