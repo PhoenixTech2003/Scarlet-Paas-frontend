@@ -21,7 +21,7 @@ export default function Dashboard() {
       </section>
       <section className="text-white font-bold text-2xl p-6 text-center overflow-y-scroll"> 
         <div className="flex justify-end">
-          <UserButton/>
+          <UserButton showName appearance={{elements:{userButtonOuterIdentifier:"text-white text-md"}}}/>
           </div>     
         <Outlet />
       </section>
