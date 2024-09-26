@@ -6,9 +6,12 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
+import { Form } from "@remix-run/react";
 import { FaArrowRight } from "react-icons/fa";
 import type { AppCatalogCard } from "~/lib/definitions";
 import { Button } from "./ui/button";
+import { Label } from "./ui/label";
+import { Input } from "./ui/input";
 
 export default function AppCatalogCard({
   details,
@@ -27,16 +30,20 @@ export default function AppCatalogCard({
           <FaArrowRight color="#e11d48" />
         </div>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent >
         <DialogHeader>
           <DialogTitle>Let us deploy your {details.name} app</DialogTitle>
           <DialogDescription>
             Please provide a name for your app and upload a zip file of the app
           </DialogDescription>
         </DialogHeader>
-        <form>
-
-        </form>
+        <Form className="grid gap-4">
+          <Label>App Name</Label>
+          <Input type="text" />
+          <Label>Zip file</Label>
+          <Input type="file" />
+          <Button type="submit">Deploy</Button>
+        </Form>
       </DialogContent>
     </Dialog>
   );
