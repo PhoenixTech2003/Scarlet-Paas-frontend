@@ -11,9 +11,6 @@ export async function saveUserDataToMongo(
   await axios.post("http://localhost:8083/users", user);
 }
 
-export async function getMongoUserId(email: string) {
-  return axios.get(`http://localhost:8083/users/${email}`);
-}
 
 export async function getUserDetails(id:string | undefined) {
     return (await axios.get(`http://localhost:8083/users/${id}/details`)).data
@@ -21,7 +18,7 @@ export async function getUserDetails(id:string | undefined) {
 
 export async function postDeployment(formData: FormData){
   
-  axios.post("http://localhost:8083/deployments/", formData,{headers:{
+  return axios.post("http://localhost:8083/deployments/", formData,{headers:{
     'Content-Type': 'multipart/form-data',
   }},)
 }
