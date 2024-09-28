@@ -25,9 +25,10 @@ export const action = async ({params, request}:ActionFunctionArgs)=>{
     data.append(key, value);
   }
 
-  console.log(data)
-  await postDeployment(data)
-  return null
+const response =  await (await postDeployment(data)).data
+const userId = response.userId
+const deployemntId = response.deploymentId
+return redirect(`/dashboard/${userId}/deployments/${deployemntId}`)
 }
 
 export default function AppCatalog() {
