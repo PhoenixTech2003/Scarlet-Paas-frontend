@@ -33,6 +33,7 @@
     "socket.io-client": "^4.8.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
+    "tailwindcss-animated": "^1.1.2",
     "typed.js": "^2.1.0",
     "zod": "^3.23.8"
   },
