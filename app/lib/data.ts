@@ -22,3 +22,11 @@ export async function postDeployment(formData: FormData){
     'Content-Type': 'multipart/form-data',
   }},)
 }
+
+export async function getDeployments (userId:string){
+  return (await axios.get(`http://localhost:8083/deployments/${userId}`)).data
+}
+
+export async function getLogs(userId:string, deploymentId:string){
+  return (await axios.get(`http://localhost:8083/deployments/${userId}/${deploymentId}`)).data
+}
