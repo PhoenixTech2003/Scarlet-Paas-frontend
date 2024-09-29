@@ -24,9 +24,9 @@ export const loader:LoaderFunction = async(args)=>{
 export default function Index() {
   return (
     <SignedOut>
-    <div className="bg-gradient-to-r from-slate-950 to-slate-700">
-      <nav className="flex justify-between items-center p-6">
-        <p className="text-white font-extrabold text-3xl">
+    <div className="bg-gradient-to-r from-slate-950 to-slate-700 p-4">
+      <nav className="flex justify-between items-center gap-4 p-6">
+        <p className="text-white font-extrabold text-base md:text-3xl">
           SCARLET<span className="text-rose-600">Deploy</span>
         </p>
         <div className="flex gap-4">
@@ -51,7 +51,7 @@ export default function Index() {
             <span className="text-rose-600 font-extrabold">Deploy</span>
           </p>
           <div className="flex justify-center mt-8">
-            <Link to={"/"}>
+            <Link to={"/sign-in"}>
               <Button className="font-extrabold bg-rose-600 text-white">
                 Lets Deploy
               </Button>
