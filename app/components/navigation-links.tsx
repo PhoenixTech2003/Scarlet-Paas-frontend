@@ -6,7 +6,7 @@ import { useAuth } from "@clerk/remix";
 export default function NavLinks() {
   const {userId} = useAuth()
   return (
-    <ul>
+    <ul className="grid grid-cols-2 items-center gap-20 md:block">
       <li className="flex gap-2 rounded-md items-center ">
         <NavLink className={({isActive, isPending})=>
         isActive ? "bg-rose-600 text-xl font-medium flex gap-2 rounded-md px-6 py-2" : isPending ? "flex items-center font-medium px-6 py-2" : "hover:bg-rose-600 flex items-center font-medium gap-2 px-6 py-2 rounded-md"
@@ -15,12 +15,12 @@ export default function NavLinks() {
     
         <TbApps size={30} />
         
-          <p className="text-xl">App Catalog</p>
+          <p className="text-xl hidden md:block">App Catalog</p>
 
     
         </NavLink>
       </li>
-      <li className="flex gap-2 rounded-md items-center mt-8">
+      <li className="flex gap-2 rounded-md items-center md:mt-8">
       <NavLink className={({isActive, isPending})=>
         isActive ? "bg-rose-600 text-xl font-medium flex gap-2 rounded-md px-6 py-2" : isPending ? "flex items-center font-medium px-6 py-2" : "hover:bg-rose-600 gap-2 flex items-center font-medium px-6 py-2 rounded-md"
 
@@ -29,7 +29,7 @@ export default function NavLinks() {
         {" "}
         <AiOutlineDeploymentUnit size={30} />
         
-          <p className="text-xl">Deployments</p>
+          <p className="text-xl hidden md:block">Deployments</p>
     
         </NavLink>
         
