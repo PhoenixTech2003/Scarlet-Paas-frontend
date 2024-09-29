@@ -12,14 +12,19 @@ import type { AppCatalogCard } from "~/lib/definitions";
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
-
+import spinner from "../assests/Loader.gif";
+import { useState } from "react";
 
 export default function AppCatalogCard({
   details,
 }: {
   details: AppCatalogCard;
 }) {
-  
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = () => {
+    setIsLoading(true);
+  };
 
   return (
     <Dialog>
@@ -33,19 +38,32 @@ export default function AppCatalogCard({
           <FaArrowRight color="#e11d48" />
         </div>
       </DialogTrigger>
-      <DialogContent >
+      <DialogContent>
         <DialogHeader>
           <DialogTitle>Let us deploy your {details.name} app</DialogTitle>
           <DialogDescription>
-            Please provide a name for your app and upload a zip file of the app
+            Please provide a name for your app make sure it is in small letters
+            all out without spaces and special characters or deployment will
+            fail and upload a zip file of the app
           </DialogDescription>
         </DialogHeader>
-        <Form  encType="multipart/form-data" method="post" className="grid gap-4">
+        <Form
+          encType="multipart/form-data"
+          method="post"
+          className="grid gap-4"
+          onSubmit={handleSubmit}
+        >
           <Label>App Name</Label>
           <Input name="appname" type="text" />
           <Label>Zip file</Label>
           <Input name="zipFile" type="file" />
-          <Button type="submit">Deploy</Button>
+          <Button type="submit" disabled={isLoading}>
+            {isLoading ? (
+              <img className="w-10" src={spinner} alt="loading spinner" />
+            ) : (
+              "Deploy"
+            )}
+          </Button>
         </Form>
       </DialogContent>
     </Dialog>
