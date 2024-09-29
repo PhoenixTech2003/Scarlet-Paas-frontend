@@ -10,6 +10,14 @@ export type AppFormData ={
     zipFile : File;
 }
 
+export type Deployment = {
+    id: string;
+    userId: string;
+    _id: string;
+    app_name: string;
+    status: string;
+  };
+
 
 
 
